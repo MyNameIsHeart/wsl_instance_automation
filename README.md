@@ -13,13 +13,13 @@ Script to automate handling wsl2 instances (mainly for testing)
 .\setup-clean-wsl2.ps1
 ```
 
-## Reset everything and rebuild (make the instance "clean" again)
+## Reset everything and rebuild (make the instance "clean" again):
 
 ```
 .\setup-clean-wsl2.ps1 -Reset
 ```
 
-## Delete said wsl2 instance and folder:
+## Unregister instance and delete related files:
 
 ```
 .\setup-clean-wsl2.ps1 -Delete
