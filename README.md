@@ -19,6 +19,12 @@ Script to automate handling wsl2 instances (mainly for testing)
 .\setup-clean-wsl2.ps1 -Reset
 ```
 
+## Related WSL commands:
+
+Use this instance: ```wsl -d CleanUbuntu```
+<br>
+List available instances: ```wsl -l -v```
+
 ## Delete said wsl2 instance and folder:
 
 ```
