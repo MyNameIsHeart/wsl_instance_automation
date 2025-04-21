@@ -3,8 +3,8 @@ param(
     [switch]$Delete
 )
 
-$DistName = "CleanUbuntu"
-$InstallPath = "C:\wsl\$DistName"
+$InstName = "CleanUbuntu"
+$InstallPath = "C:\wsl\$InstName"
 $DistUrl = "https://cloud-images.ubuntu.com/minimal/releases/noble/release/ubuntu-24.04-minimal-cloudimg-amd64-root.tar.xz" # not automatically set to latest...
 $TarFile = [IO.Path]::GetFileName($DistUrl)
 $DistFile = "$env:TEMP\$TarFile" # keep the tar in %TEMP% - only needed once during import
@@ -21,9 +21,9 @@ function Is-Instance-Valid {
 }
 
 function Remove-Files {
-    if ((wsl -l -q) -contains $DistName) {
-        Write-Host "`nunregistering $DistName`n"
-        wsl --unregister $DistName
+    if ((wsl -l -q) -contains $InstName) {
+        Write-Host "`nunregistering $InstName`n"
+        wsl --unregister $InstName
     }
     if (Test-Path $InstallPath) {
       Remove-Item -Recurse -Force $InstallPath
@@ -34,8 +34,8 @@ function Remove-Files {
 }
 
 # reset if the registration exists but is broken
-if ((wsl -l -q) -contains $DistName -and -not (Is-Instance-Valid $DistName)) {
-    Write-Warning "$DistName is registered but unusable - forcing reset"
+if ((wsl -l -q) -contains $InstName -and -not (Is-Instance-Valid $InstName)) {
+    Write-Warning "$InstName is registered but unusable - forcing reset"
     $Reset = $true
 }
 
@@ -45,7 +45,7 @@ if ($Reset) {
 
 if ($Delete) {
     Remove-Files
-    Write-Host "`n$DistName removed, Exiting`n"
+    Write-Host "`n$InstName removed, Exiting`n"
     return
 }
 
@@ -56,9 +56,9 @@ if (-not (Test-Path $DistFile)) {
 }
 
 # import if needed
-if (-not ((wsl -l -q) -contains $DistName)) {
-    Write-Host "`nimporting $DistName as WSL-2 `n"
-    wsl --import $DistName $InstallPath $DistFile --version 2
+if (-not ((wsl -l -q) -contains $InstName)) {
+    Write-Host "`nimporting $InstName as WSL-2 `n"
+    wsl --import $InstName $InstallPath $DistFile --version 2
 }
 
-Write-Host "`nfinished creating instance $DistName`n"
+Write-Host "`nfinished creating instance $InstName`n"
