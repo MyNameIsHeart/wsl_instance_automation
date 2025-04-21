@@ -1,5 +1,5 @@
 # wsl_instance_automation
-Script to automate handling wsl2 instances (mainly for testing)
+Script to automate handling WSL instances (mainly for testing)
 
 ## Before running:
 
