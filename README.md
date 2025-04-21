@@ -7,7 +7,7 @@ Script to automate handling WSL instances (mainly for testing)
 - Navigate to script folder
 - Run ```Set-ExecutionPolicy Bypass -Scope Process -Force```
 
-## Set up a new clean wsl2 instance:
+## Set up a new clean WSL2 instance:
 
 ```
 .\setup-clean-wsl2.ps1
